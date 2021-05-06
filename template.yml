@@ -14,7 +14,7 @@ Resources:
             Action: ['sts:AssumeRole']
       CodeUri: .
       Handler: controller.lambda_handler
-      Runtime: python3.8
+      Runtime: python3.7
       Timeout: 180
       Events:
         flaskApi:
