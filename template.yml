@@ -1,0 +1,24 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+
+Resources:
+  flaskFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: [lambda.amazonaws.com]
+            Action: ['sts:AssumeRole']
+      CodeUri: .
+      Handler: controller.lambda_handler
+      Runtime: python3.8
+      Timeout: 180
+      Events:
+        flaskApi:
+          Type: Api
+          Properties:
+            Path: /
+            Method: GET
